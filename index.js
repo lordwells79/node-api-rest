@@ -1,9 +1,9 @@
 const express = require("express");
-//import "dotenv/config";
+require("dotenv").config();
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const stripe = require("stripe")(process.env(NEXT_PUBLIC_STRIPE_SECRET_KEY));
+const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 const cors = require("cors");
 
 // Abilita le richieste CORS
