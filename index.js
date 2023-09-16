@@ -3,9 +3,7 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const stripe = require("stripe")(
-  "sk_test_51LgVyyLzz7lGNntzMNlYr0gonrypuHPGX5efnsjbW4e3jKpjdiOdQpz37iJl5fMdJsZEPT81dm6z81UdpjvVHQjG00GlISWeE9"
-);
+const stripe = require("stripe")(process.env(NEXT_PUBLIC_STRIPE_SECRET_KEY));
 const cors = require("cors");
 
 // Abilita le richieste CORS
