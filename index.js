@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-//const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 // const PAYPAL_CLIENT_ID =
 //   "AcSI5h8u49XhtqWW5zHgTPzoLwjQjfVYdl2MmMU3qtPB1zAtplWwxOZM5XWZvWilkUuaMCGrStpI6F6N";
 // const PAYPAL_CLIENT_SECRET =
