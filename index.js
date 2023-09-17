@@ -12,10 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 
-// const PAYPAL_CLIENT_ID =
-//   "AcSI5h8u49XhtqWW5zHgTPzoLwjQjfVYdl2MmMU3qtPB1zAtplWwxOZM5XWZvWilkUuaMCGrStpI6F6N";
-// const PAYPAL_CLIENT_SECRET =
-//   "EGaenJ3RWjQr2BU3wxmi8IhhJSUXBIGlrV4oUaJP_UXh5MnQnLa-KBSPLpBJYOXM4TLUImu2gZcQvfiq";
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_CLIENT_SECRET = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_SECRET;
 
