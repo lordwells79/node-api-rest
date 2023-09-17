@@ -16,8 +16,8 @@ app.use(bodyParser.json());
 //   "AcSI5h8u49XhtqWW5zHgTPzoLwjQjfVYdl2MmMU3qtPB1zAtplWwxOZM5XWZvWilkUuaMCGrStpI6F6N";
 // const PAYPAL_CLIENT_SECRET =
 //   "EGaenJ3RWjQr2BU3wxmi8IhhJSUXBIGlrV4oUaJP_UXh5MnQnLa-KBSPLpBJYOXM4TLUImu2gZcQvfiq";
-const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
-const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
+const PAYPAL_CLIENT_SECRET = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_SECRET;
 
 const basePayPal = "https://api-m.sandbox.paypal.com";
 
