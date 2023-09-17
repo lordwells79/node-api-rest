@@ -13,11 +13,14 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 //const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
-const PAYPAL_CLIENT_ID =
-  "AcSI5h8u49XhtqWW5zHgTPzoLwjQjfVYdl2MmMU3qtPB1zAtplWwxOZM5XWZvWilkUuaMCGrStpI6F6N";
-const PAYPAL_CLIENT_SECRET =
-  "EGaenJ3RWjQr2BU3wxmi8IhhJSUXBIGlrV4oUaJP_UXh5MnQnLa-KBSPLpBJYOXM4TLUImu2gZcQvfiq";
-const base = "https://api-m.sandbox.paypal.com";
+// const PAYPAL_CLIENT_ID =
+//   "AcSI5h8u49XhtqWW5zHgTPzoLwjQjfVYdl2MmMU3qtPB1zAtplWwxOZM5XWZvWilkUuaMCGrStpI6F6N";
+// const PAYPAL_CLIENT_SECRET =
+//   "EGaenJ3RWjQr2BU3wxmi8IhhJSUXBIGlrV4oUaJP_UXh5MnQnLa-KBSPLpBJYOXM4TLUImu2gZcQvfiq";
+const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
+const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+
+const basePayPal = "https://api-m.sandbox.paypal.com";
 
 //STRIPE  Definisci l'endpoint API per creare una sessione di pagamento
 app.post("/api/checkout_sessions", async (req, res) => {
@@ -89,7 +92,7 @@ const generateAccessToken = async () => {
       PAYPAL_CLIENT_ID + ":" + PAYPAL_CLIENT_SECRET
     ).toString("base64");
 
-    const response = await fetch(`${base}/v1/oauth2/token`, {
+    const response = await fetch(`${basePayPal}/v1/oauth2/token`, {
       method: "POST",
       body: "grant_type=client_credentials",
       headers: {
@@ -162,7 +165,7 @@ const createOrder = async (cart) => {
     },
   });
 
-  const response = await fetch(`${base}/v2/checkout/orders`, {
+  const response = await fetch(`${basePayPal}/v2/checkout/orders`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -180,7 +183,7 @@ const createOrder = async (cart) => {
  */
 const captureOrder = async (orderID) => {
   const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders/${orderID}/capture`;
+  const url = `${basePayPal}/v2/checkout/orders/${orderID}/capture`;
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -206,7 +209,7 @@ app.post("/api/orders", async (req, res) => {
 
     const { jsonResponse, httpStatusCode } = await createOrder(cart);
     //const jsonResponse = await createOrder(cart);
-    console.log("Risposta 1 ", jsonResponse);
+    //console.log("Risposta 1 ", jsonResponse);
 
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
